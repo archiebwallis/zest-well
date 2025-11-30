@@ -106,7 +106,7 @@ const columnFilters = ref({})
 const currentPage = ref(1)
 const itemsPerPage = 10
 
-// Initialize filters
+// Set up filters
 watch(() => props.columns, (newColumns) => {
   newColumns.forEach(column => {
     if (!columnFilters.value[column.key]) {

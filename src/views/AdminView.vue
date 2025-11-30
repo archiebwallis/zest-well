@@ -3,9 +3,12 @@
     <div class="row">
       <div class="col-12">
         <h1>Admin Dashboard</h1>
-        <p class="lead">Manage registered users</p>
+        <p class="lead">Manage registered users and view analytics</p>
       </div>
     </div>
+
+    <!-- Dashboard Charts -->
+    <DashboardCharts />
 
     <div class="row mt-4">
       <div class="col-12">
@@ -16,13 +19,13 @@
           <!-- Export Buttons -->
           <div class="mb-3">
             <button 
-              @click="exportCSV" 
+              @click="exportUsersCSV" 
               class="btn btn-outline-success me-2"
             >
               Export CSV
             </button>
             <button 
-              @click="exportPDF" 
+              @click="exportUsersPDF" 
               class="btn btn-outline-danger"
             >
               Export PDF
@@ -53,6 +56,7 @@ import { db } from '@/firebase/config'
 import { sanitize } from '@/utils/sanitize'
 import { exportToCSV, exportToPDF } from '@/utils/export'
 import DataTable from '@/components/DataTable.vue'
+import DashboardCharts from '@/components/DashboardCharts.vue'
 
 const users = ref([])
 const loading = ref(true)
@@ -98,12 +102,12 @@ const formatDate = (date) => {
   return date.toDate ? date.toDate().toLocaleDateString() : new Date(date).toLocaleDateString()
 }
 
-const exportCSV = () => {
-  exportToCSV(tableData.value, 'users-export.csv')
+const exportUsersCSV = () => {
+  exportToCSV(users.value, 'users-export.csv')
 }
 
-const exportPDF = () => {
-  exportToPDF(tableData.value, columns, 'User Management Report', 'users-export.pdf')
+const exportUsersPDF = () => {
+  exportToPDF(users.value, 'users-report.pdf', 'User Management Report')
 }
 
 onMounted(() => {

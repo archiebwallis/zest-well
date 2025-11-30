@@ -17,7 +17,7 @@
                     placeholder="First name"
                     v-model="formData.firstName"
                   >
-                  <div class="invalid-feedback" v-if="errors.firstName">
+                  <div class="invalid-feedback" v-if="errors.firstName" role="alert" aria-live="polite">
                     {{ errors.firstName }}
                   </div>
                 </div>
@@ -31,7 +31,7 @@
                     placeholder="Last name"
                     v-model="formData.lastName"
                   >
-                  <div class="invalid-feedback" v-if="errors.lastName">
+                  <div class="invalid-feedback" v-if="errors.lastName" role="alert" aria-live="polite">
                     {{ errors.lastName }}
                   </div>
                 </div>
@@ -46,7 +46,7 @@
                   placeholder="Enter email"
                   v-model="formData.email"
                 >
-                <div class="invalid-feedback" v-if="errors.email">
+                <div class="invalid-feedback" v-if="errors.email" role="alert" aria-live="polite">
                   {{ errors.email }}
                 </div>
               </div>
@@ -60,7 +60,7 @@
                   placeholder="Enter phone number"
                   v-model="formData.phone"
                 >
-                <div class="invalid-feedback" v-if="errors.phone">
+                <div class="invalid-feedback" v-if="errors.phone" role="alert" aria-live="polite">
                   {{ errors.phone }}
                 </div>
               </div>
@@ -74,7 +74,7 @@
                   placeholder="Enter suburb"
                   v-model="formData.suburb"
                 >
-                <div class="invalid-feedback" v-if="errors.suburb">
+                <div class="invalid-feedback" v-if="errors.suburb" role="alert" aria-live="polite">
                   {{ errors.suburb }}
                 </div>
               </div>
@@ -88,7 +88,7 @@
                   placeholder="Create password"
                   v-model="formData.password"
                 >
-                <div class="invalid-feedback" v-if="errors.password">
+                <div class="invalid-feedback" v-if="errors.password" role="alert" aria-live="polite">
                   {{ errors.password }}
                 </div>
               </div>
@@ -102,7 +102,7 @@
                   placeholder="Confirm password"
                   v-model="formData.confirmPassword"
                 >
-                <div class="invalid-feedback" v-if="errors.confirmPassword">
+                <div class="invalid-feedback" v-if="errors.confirmPassword" role="alert" aria-live="polite">
                   {{ errors.confirmPassword }}
                 </div>
               </div>
@@ -117,11 +117,11 @@
                 <label class="form-check-label" for="terms">
                   I agree to the <a href="#" class="text-decoration-none">Terms of Service</a>
                 </label>
-                <div class="invalid-feedback" v-if="errors.terms">
+                <div class="invalid-feedback" v-if="errors.terms" role="alert" aria-live="polite">
                   {{ errors.terms }}
                 </div>
               </div>
-              <div class="alert alert-danger" v-if="errors.general">
+              <div class="alert alert-danger" v-if="errors.general" role="alert" aria-live="assertive">
                 {{ errors.general }}
               </div>
               <button 
@@ -146,8 +146,7 @@
 </template>
 
 <script setup>
-// This form uses client-side validation to prevent invalid data submission
-// Additional server-side validation and sanitization occurs in the user store
+// Form validation happens on client and server side
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useUserStore } from '@/stores/user'
@@ -235,17 +234,18 @@ const isFormValid = computed(() => {
 const handleSubmit = async (event) => {
   event.preventDefault()
   
-  if (validateForm() && !isSubmitting.value) {
-    isSubmitting.value = true
-    
-    try {
-      await userStore.register(formData.value)
-      router.push('/dashboard')
-    } catch (error) {
-      errors.value.general = error.message
-    } finally {
-      isSubmitting.value = false
-    }
+  if (!validateForm() || isSubmitting.value) return
+  
+  isSubmitting.value = true
+  errors.value.general = null
+  
+  try {
+    await userStore.register(formData.value)
+    router.push('/dashboard')
+  } catch (error) {
+    console.error('Registration error:', error)
+    errors.value.general = error.message || 'Registration failed. Please try again.'
+    isSubmitting.value = false
   }
 }
 </script>

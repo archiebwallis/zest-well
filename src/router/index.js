@@ -52,6 +52,12 @@ const router = createRouter({
       name: 'ClinicManagement',
       component: () => import('../views/ClinicManagementView.vue'),
       meta: { requiresAuth: true, requiresRole: 'staff' }
+    },
+    {
+      path: '/book-appointment',
+      name: 'BookAppointment',
+      component: () => import('../views/BookAppointmentView.vue'),
+      meta: { requiresAuth: true }
     }
   ],
 })

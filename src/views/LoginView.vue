@@ -16,7 +16,7 @@
                   placeholder="Enter email"
                   v-model="formData.email"
                 >
-                <div class="invalid-feedback" v-if="errors.email">
+                <div class="invalid-feedback" v-if="errors.email" role="alert" aria-live="polite">
                   {{ errors.email }}
                 </div>
               </div>
@@ -30,7 +30,7 @@
                   placeholder="Enter password"
                   v-model="formData.password"
                 >
-                <div class="invalid-feedback" v-if="errors.password">
+                <div class="invalid-feedback" v-if="errors.password" role="alert" aria-live="polite">
                   {{ errors.password }}
                 </div>
               </div>
@@ -38,7 +38,7 @@
                 <input type="checkbox" class="form-check-input" id="remember">
                 <label class="form-check-label" for="remember">Remember me</label>
               </div>
-              <div class="alert alert-danger" v-if="errors.general">
+              <div class="alert alert-danger" v-if="errors.general" role="alert" aria-live="assertive">
                 {{ errors.general }}
               </div>
               <button 

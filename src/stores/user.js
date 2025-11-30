@@ -20,10 +20,11 @@ export const useUserStore = defineStore('user', () => {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password)
     const user = userCredential.user
 
+    // This write operation will automatically trigger the Cloud Function!
     await setDoc(doc(db, 'users', user.uid), {
       firstName: sanitize(firstName),
       lastName: sanitize(lastName),
-      email: sanitize(email),
+      email: email,
       phone: sanitize(phone),
       suburb: sanitize(suburb),
       role: 'user',
@@ -38,9 +39,15 @@ export const useUserStore = defineStore('user', () => {
     const userCredential = await signInWithEmailAndPassword(auth, email, password)
     const user = userCredential.user
 
-    const userDoc = await getDoc(doc(db, 'users', user.uid))
-    if (userDoc.exists()) {
-      userRole.value = userDoc.data().role
+    try {
+      const userDoc = await getDoc(doc(db, 'users', user.uid))
+      if (userDoc.exists()) {
+        userRole.value = userDoc.data().role
+      }
+    } catch (error) {
+      console.warn('Unable to fetch user role during login (offline):', error)
+      // Set default role when offline
+      userRole.value = 'user'
     }
 
     currentUser.value = user
@@ -56,9 +63,15 @@ export const useUserStore = defineStore('user', () => {
     onAuthStateChanged(auth, async (user) => {
       if (user) {
         currentUser.value = user
-        const userDoc = await getDoc(doc(db, 'users', user.uid))
-        if (userDoc.exists()) {
-          userRole.value = userDoc.data().role
+        try {
+          const userDoc = await getDoc(doc(db, 'users', user.uid))
+          if (userDoc.exists()) {
+            userRole.value = userDoc.data().role
+          }
+        } catch (error) {
+          console.warn('Unable to fetch user role (offline):', error)
+          // Set default role when offline
+          userRole.value = 'user'
         }
       } else {
         currentUser.value = null

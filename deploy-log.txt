@@ -1,0 +1,236 @@
+[2025-11-30T11:42:29.068Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[2025-11-30T11:42:29.068Z] > authorizing via signed-in user (archiebwallis@gmail.com)
+[2025-11-30T11:42:29.068Z] [iam] checking project zest-well for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[2025-11-30T11:42:29.069Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:29.069Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:29.069Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/zest-well:testIamPermissions [none]
+[2025-11-30T11:42:29.069Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/zest-well:testIamPermissions x-goog-quota-user=projects/zest-well
+[2025-11-30T11:42:29.069Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/zest-well:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[2025-11-30T11:42:30.362Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/zest-well:testIamPermissions 200
+[2025-11-30T11:42:30.362Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/zest-well:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[2025-11-30T11:42:30.363Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:30.363Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:30.363Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/zest-well [none]
+[2025-11-30T11:42:30.870Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/zest-well 200
+[2025-11-30T11:42:30.870Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/zest-well {"projectId":"zest-well","projectNumber":"670120406228","displayName":"zest-well","name":"projects/zest-well","resources":{"hostingSite":"zest-well"},"state":"ACTIVE","etag":"1_4bb18639-b1d2-438a-a356-65b6e06be72d"}
+
+=== Deploying to 'zest-well'...
+
+i  deploying hosting 
+[2025-11-30T11:42:30.876Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:30.877Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:30.877Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/zest-well/versions [none]
+[2025-11-30T11:42:30.877Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/zest-well/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
+[2025-11-30T11:42:32.404Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/zest-well/versions 200
+[2025-11-30T11:42:32.405Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/zest-well/versions {"name":"projects/670120406228/sites/zest-well/versions/e6eccdf2acab9616","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase"}}
+i  hosting[zest-well]: beginning deploy... 
+i  hosting[zest-well]: found 25 files in dist 
+[2025-11-30T11:42:32.420Z] [hosting] uploading with 200 concurrency
+[2025-11-30T11:42:32.477Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:32.477Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:32.478Z] [hosting] hash cache [ZGlzdA] stored for 25 files
+[2025-11-30T11:42:32.478Z] [hosting][hash queue][FINAL] {"max":52,"min":11,"avg":16.28,"active":0,"complete":25,"success":25,"errored":0,"retried":0,"total":25,"elapsed":56}
+[2025-11-30T11:42:32.478Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/670120406228/sites/zest-well/versions/e6eccdf2acab9616:populateFiles [none]
+[2025-11-30T11:42:32.478Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/670120406228/sites/zest-well/versions/e6eccdf2acab9616:populateFiles {"files":{"/index.html":"e4fb13e960cdff51513df9294510dc8068da0dac0f8128f94ddf54ad7f9bb888","/favicon.ico":"7a1a72943a1b2d7ed41d75574715a454ac9bfb21b636100c59ccd713ca3e86e1","/assets/purify.es-BpVZ_uCt.js":"b81ef27765fa483e65ff09031412b47eaed85656e70521f8ecb9be9ab22a60e5","/assets/jspdf.plugin.autotable-D8yGCafH.js":"248a453525fe6c129c492a38d79f078d6a0d6ffd33fd2132073118bb35a1b19a","/assets/clinics-CvLvcuIC.js":"5c142191092518cbf18fef695616d0c431e46b5d5a4f8e7bbbe1d8985e7eff07","/assets/LoginView-DDRHcf4z.js":"f47e697c44d96018ed0dca8fc404b69f2007f52b3325d0860f05724a73a5a6d1","/assets/ResourcesView-C7kwO_Yp.js":"0f0050f4cafd4418a18450dd1165a15aa2edfe66a29b577640e9c8a69a38296c","/assets/DataTable-Cor9CudQ.css":"8442116688c0b6bb7d9c4eaaf91bd460c883b91b94d0d6cee7b2285fc7d37987","/assets/RegisterView-DUyALSx9.js":"966e178ff166d09506d844b2ec6a29bac9031f46d328ab03ac9095ef465b0ed2","/assets/DataTable-B4gQztS5.js":"33b4a57a294888b9396e236952e7d2d294ff3e785b6244adbf9e94129044e6d9","/assets/DashboardView-vbu1UBPF.css":"f668cb90771f2720ff79f904e964cf5f796b81453fe02830a5673fe9ecf8bdc8","/assets/DashboardView-FcZouCor.js":"aadcb4cc6554524bb1f0680491b8932e9c60c2dac770b48b84815de8439f3437","/assets/CommunityView-B7I40Qtq.js":"f4f0c5d65db257e90062fbf2b8a03e3cd3c0ed5eb16638278d5d8dbb2c2cb2d4","/assets/ClinicManagementView-CavvYPbl.js":"9da34659ebbf4ea4b303720f1bb003503bd6d2a0c9aee2323b8fc52ff99aa966","/assets/BookAppointmentView-C-fHEwO1.css":"b3c85476bdb3c695cda87e72df979f5457fd69e6cbebf688c37ebdd7cf22ab94","/assets/AdminView-Cp9xkcde.css":"0822bba16f056fcc5554f89a54a6e578fd7a1fc4cb42aba10b5b0559eed15feb","/assets/FindServicesView-DEyjUCES.css":"4ecacddfff1a78396d847aec50206a96762c3b5a3782628e6c461c801cbbf31c","/assets/index.es-DSnZu-Rf.js":"c9b285c0d02b29e589416bc8ed9420420abaf70049bb7b8c3fc86e9bf2d848e0","/assets/index-C9xBDqgf.css":"7e89f20ecbe2acc5c745c33a5a6d67ab9ce6bf4e170e88d7d8433b5ea4f8ded3","/assets/AdminView-VBCUMgCT.js":"d143fb00fdc9ee50380b15ef95327845b2516b657d38844f2728e63bb484555e","/assets/html2canvas.esm-Ge7aVWlp.js":"ada9436e16ba7a506dadce5d82b96346bc52ea1f3d2685042be3f251b37e8c14","/assets/BookAppointmentView-CJJbQ_ay.js":"24931ec92cc0901a0387fc6b0df7d1db46a731e3d979489077eff73c819bf927","/assets/jspdf.es.min-BTxvli_2.js":"9e1fa65da447b219e33eca169814a8e7fb5b68c9f03011cdf7685d0db2942e75","/assets/index-pI8m1GZG.js":"a832e807ddcf06efacfed4cf10a3675324efe94b3d648fa874cafde8b5251ae3","/assets/FindServicesView-rjis1PHy.js":"3c3a27c722e36442832b324e6ef7371a89c26f73865f784a895fb92b6066243e"}}
+[2025-11-30T11:42:33.006Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/670120406228/sites/zest-well/versions/e6eccdf2acab9616:populateFiles 200
+[2025-11-30T11:42:33.006Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/670120406228/sites/zest-well/versions/e6eccdf2acab9616:populateFiles {"uploadRequiredHashes":["248a453525fe6c129c492a38d79f078d6a0d6ffd33fd2132073118bb35a1b19a","7e89f20ecbe2acc5c745c33a5a6d67ab9ce6bf4e170e88d7d8433b5ea4f8ded3","8442116688c0b6bb7d9c4eaaf91bd460c883b91b94d0d6cee7b2285fc7d37987","966e178ff166d09506d844b2ec6a29bac9031f46d328ab03ac9095ef465b0ed2","33b4a57a294888b9396e236952e7d2d294ff3e785b6244adbf9e94129044e6d9","9da34659ebbf4ea4b303720f1bb003503bd6d2a0c9aee2323b8fc52ff99aa966","a832e807ddcf06efacfed4cf10a3675324efe94b3d648fa874cafde8b5251ae3","b81ef27765fa483e65ff09031412b47eaed85656e70521f8ecb9be9ab22a60e5","aadcb4cc6554524bb1f0680491b8932e9c60c2dac770b48b84815de8439f3437","f4f0c5d65db257e90062fbf2b8a03e3cd3c0ed5eb16638278d5d8dbb2c2cb2d4","24931ec92cc0901a0387fc6b0df7d1db46a731e3d979489077eff73c819bf927","4ecacddfff1a78396d847aec50206a96762c3b5a3782628e6c461c801cbbf31c","0f0050f4cafd4418a18450dd1165a15aa2edfe66a29b577640e9c8a69a38296c","f668cb90771f2720ff79f904e964cf5f796b81453fe02830a5673fe9ecf8bdc8","f47e697c44d96018ed0dca8fc404b69f2007f52b3325d0860f05724a73a5a6d1","7a1a72943a1b2d7ed41d75574715a454ac9bfb21b636100c59ccd713ca3e86e1","b3c85476bdb3c695cda87e72df979f5457fd69e6cbebf688c37ebdd7cf22ab94","c9b285c0d02b29e589416bc8ed9420420abaf70049bb7b8c3fc86e9bf2d848e0","3c3a27c722e36442832b324e6ef7371a89c26f73865f784a895fb92b6066243e","d143fb00fdc9ee50380b15ef95327845b2516b657d38844f2728e63bb484555e","e4fb13e960cdff51513df9294510dc8068da0dac0f8128f94ddf54ad7f9bb888","5c142191092518cbf18fef695616d0c431e46b5d5a4f8e7bbbe1d8985e7eff07","ada9436e16ba7a506dadce5d82b96346bc52ea1f3d2685042be3f251b37e8c14","9e1fa65da447b219e33eca169814a8e7fb5b68c9f03011cdf7685d0db2942e75","0822bba16f056fcc5554f89a54a6e578fd7a1fc4cb42aba10b5b0559eed15feb"],"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files"}
+[2025-11-30T11:42:33.007Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.007Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.007Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.008Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.008Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.008Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.008Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.008Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.008Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.008Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.008Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.008Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.009Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.009Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.009Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.009Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.009Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.009Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.009Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.009Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.009Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.009Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.009Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.010Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.010Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.010Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.010Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.010Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.010Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.010Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.010Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.010Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.010Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.010Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.010Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.010Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.010Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.011Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.011Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.011Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.011Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.011Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.011Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.011Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.011Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.011Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.011Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.011Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.011Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.011Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:33.012Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/248a453525fe6c129c492a38d79f078d6a0d6ffd33fd2132073118bb35a1b19a [none]
+[2025-11-30T11:42:33.012Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/248a453525fe6c129c492a38d79f078d6a0d6ffd33fd2132073118bb35a1b19a [stream]
+[2025-11-30T11:42:33.013Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/7e89f20ecbe2acc5c745c33a5a6d67ab9ce6bf4e170e88d7d8433b5ea4f8ded3 [none]
+[2025-11-30T11:42:33.014Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/7e89f20ecbe2acc5c745c33a5a6d67ab9ce6bf4e170e88d7d8433b5ea4f8ded3 [stream]
+[2025-11-30T11:42:33.015Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/8442116688c0b6bb7d9c4eaaf91bd460c883b91b94d0d6cee7b2285fc7d37987 [none]
+[2025-11-30T11:42:33.015Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/8442116688c0b6bb7d9c4eaaf91bd460c883b91b94d0d6cee7b2285fc7d37987 [stream]
+[2025-11-30T11:42:33.017Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/966e178ff166d09506d844b2ec6a29bac9031f46d328ab03ac9095ef465b0ed2 [none]
+[2025-11-30T11:42:33.017Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/966e178ff166d09506d844b2ec6a29bac9031f46d328ab03ac9095ef465b0ed2 [stream]
+[2025-11-30T11:42:33.018Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/33b4a57a294888b9396e236952e7d2d294ff3e785b6244adbf9e94129044e6d9 [none]
+[2025-11-30T11:42:33.018Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/33b4a57a294888b9396e236952e7d2d294ff3e785b6244adbf9e94129044e6d9 [stream]
+[2025-11-30T11:42:33.020Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/9da34659ebbf4ea4b303720f1bb003503bd6d2a0c9aee2323b8fc52ff99aa966 [none]
+[2025-11-30T11:42:33.020Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/9da34659ebbf4ea4b303720f1bb003503bd6d2a0c9aee2323b8fc52ff99aa966 [stream]
+[2025-11-30T11:42:33.021Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/a832e807ddcf06efacfed4cf10a3675324efe94b3d648fa874cafde8b5251ae3 [none]
+[2025-11-30T11:42:33.021Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/a832e807ddcf06efacfed4cf10a3675324efe94b3d648fa874cafde8b5251ae3 [stream]
+[2025-11-30T11:42:33.022Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/b81ef27765fa483e65ff09031412b47eaed85656e70521f8ecb9be9ab22a60e5 [none]
+[2025-11-30T11:42:33.022Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/b81ef27765fa483e65ff09031412b47eaed85656e70521f8ecb9be9ab22a60e5 [stream]
+[2025-11-30T11:42:33.022Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/aadcb4cc6554524bb1f0680491b8932e9c60c2dac770b48b84815de8439f3437 [none]
+[2025-11-30T11:42:33.022Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/aadcb4cc6554524bb1f0680491b8932e9c60c2dac770b48b84815de8439f3437 [stream]
+[2025-11-30T11:42:33.023Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/f4f0c5d65db257e90062fbf2b8a03e3cd3c0ed5eb16638278d5d8dbb2c2cb2d4 [none]
+[2025-11-30T11:42:33.023Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/f4f0c5d65db257e90062fbf2b8a03e3cd3c0ed5eb16638278d5d8dbb2c2cb2d4 [stream]
+[2025-11-30T11:42:33.024Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/24931ec92cc0901a0387fc6b0df7d1db46a731e3d979489077eff73c819bf927 [none]
+[2025-11-30T11:42:33.024Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/24931ec92cc0901a0387fc6b0df7d1db46a731e3d979489077eff73c819bf927 [stream]
+[2025-11-30T11:42:33.025Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/4ecacddfff1a78396d847aec50206a96762c3b5a3782628e6c461c801cbbf31c [none]
+[2025-11-30T11:42:33.025Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/4ecacddfff1a78396d847aec50206a96762c3b5a3782628e6c461c801cbbf31c [stream]
+[2025-11-30T11:42:33.025Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/0f0050f4cafd4418a18450dd1165a15aa2edfe66a29b577640e9c8a69a38296c [none]
+[2025-11-30T11:42:33.025Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/0f0050f4cafd4418a18450dd1165a15aa2edfe66a29b577640e9c8a69a38296c [stream]
+[2025-11-30T11:42:33.026Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/f668cb90771f2720ff79f904e964cf5f796b81453fe02830a5673fe9ecf8bdc8 [none]
+[2025-11-30T11:42:33.026Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/f668cb90771f2720ff79f904e964cf5f796b81453fe02830a5673fe9ecf8bdc8 [stream]
+[2025-11-30T11:42:33.027Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/f47e697c44d96018ed0dca8fc404b69f2007f52b3325d0860f05724a73a5a6d1 [none]
+[2025-11-30T11:42:33.027Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/f47e697c44d96018ed0dca8fc404b69f2007f52b3325d0860f05724a73a5a6d1 [stream]
+[2025-11-30T11:42:33.027Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/7a1a72943a1b2d7ed41d75574715a454ac9bfb21b636100c59ccd713ca3e86e1 [none]
+[2025-11-30T11:42:33.027Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/7a1a72943a1b2d7ed41d75574715a454ac9bfb21b636100c59ccd713ca3e86e1 [stream]
+[2025-11-30T11:42:33.027Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/b3c85476bdb3c695cda87e72df979f5457fd69e6cbebf688c37ebdd7cf22ab94 [none]
+[2025-11-30T11:42:33.028Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/b3c85476bdb3c695cda87e72df979f5457fd69e6cbebf688c37ebdd7cf22ab94 [stream]
+[2025-11-30T11:42:33.028Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/c9b285c0d02b29e589416bc8ed9420420abaf70049bb7b8c3fc86e9bf2d848e0 [none]
+[2025-11-30T11:42:33.028Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/c9b285c0d02b29e589416bc8ed9420420abaf70049bb7b8c3fc86e9bf2d848e0 [stream]
+[2025-11-30T11:42:33.028Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/3c3a27c722e36442832b324e6ef7371a89c26f73865f784a895fb92b6066243e [none]
+[2025-11-30T11:42:33.028Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/3c3a27c722e36442832b324e6ef7371a89c26f73865f784a895fb92b6066243e [stream]
+[2025-11-30T11:42:33.029Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/d143fb00fdc9ee50380b15ef95327845b2516b657d38844f2728e63bb484555e [none]
+[2025-11-30T11:42:33.029Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/d143fb00fdc9ee50380b15ef95327845b2516b657d38844f2728e63bb484555e [stream]
+[2025-11-30T11:42:33.029Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/e4fb13e960cdff51513df9294510dc8068da0dac0f8128f94ddf54ad7f9bb888 [none]
+[2025-11-30T11:42:33.029Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/e4fb13e960cdff51513df9294510dc8068da0dac0f8128f94ddf54ad7f9bb888 [stream]
+[2025-11-30T11:42:33.030Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/5c142191092518cbf18fef695616d0c431e46b5d5a4f8e7bbbe1d8985e7eff07 [none]
+[2025-11-30T11:42:33.030Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/5c142191092518cbf18fef695616d0c431e46b5d5a4f8e7bbbe1d8985e7eff07 [stream]
+[2025-11-30T11:42:33.030Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/ada9436e16ba7a506dadce5d82b96346bc52ea1f3d2685042be3f251b37e8c14 [none]
+[2025-11-30T11:42:33.030Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/ada9436e16ba7a506dadce5d82b96346bc52ea1f3d2685042be3f251b37e8c14 [stream]
+[2025-11-30T11:42:33.031Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/9e1fa65da447b219e33eca169814a8e7fb5b68c9f03011cdf7685d0db2942e75 [none]
+[2025-11-30T11:42:33.031Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/9e1fa65da447b219e33eca169814a8e7fb5b68c9f03011cdf7685d0db2942e75 [stream]
+[2025-11-30T11:42:33.031Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/0822bba16f056fcc5554f89a54a6e578fd7a1fc4cb42aba10b5b0559eed15feb [none]
+[2025-11-30T11:42:33.031Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/0822bba16f056fcc5554f89a54a6e578fd7a1fc4cb42aba10b5b0559eed15feb [stream]
+[2025-11-30T11:42:33.032Z] [hosting][populate queue][FINAL] {"max":535,"min":535,"avg":535,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":555}
+[2025-11-30T11:42:33.032Z] [hosting] uploads queued: 25
+[2025-11-30T11:42:34.303Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/b81ef27765fa483e65ff09031412b47eaed85656e70521f8ecb9be9ab22a60e5 200
+[2025-11-30T11:42:34.303Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/b81ef27765fa483e65ff09031412b47eaed85656e70521f8ecb9be9ab22a60e5 [stream]
+[2025-11-30T11:42:34.333Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/7a1a72943a1b2d7ed41d75574715a454ac9bfb21b636100c59ccd713ca3e86e1 200
+[2025-11-30T11:42:34.333Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/7a1a72943a1b2d7ed41d75574715a454ac9bfb21b636100c59ccd713ca3e86e1 [stream]
+[2025-11-30T11:42:34.365Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/f4f0c5d65db257e90062fbf2b8a03e3cd3c0ed5eb16638278d5d8dbb2c2cb2d4 200
+[2025-11-30T11:42:34.365Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/f4f0c5d65db257e90062fbf2b8a03e3cd3c0ed5eb16638278d5d8dbb2c2cb2d4 [stream]
+[2025-11-30T11:42:34.396Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/966e178ff166d09506d844b2ec6a29bac9031f46d328ab03ac9095ef465b0ed2 200
+[2025-11-30T11:42:34.396Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/966e178ff166d09506d844b2ec6a29bac9031f46d328ab03ac9095ef465b0ed2 [stream]
+i  hosting: uploading new files [4/25] (16%) 
+[2025-11-30T11:42:34.473Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/aadcb4cc6554524bb1f0680491b8932e9c60c2dac770b48b84815de8439f3437 200
+[2025-11-30T11:42:34.473Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/aadcb4cc6554524bb1f0680491b8932e9c60c2dac770b48b84815de8439f3437 [stream]
+[2025-11-30T11:42:34.555Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/248a453525fe6c129c492a38d79f078d6a0d6ffd33fd2132073118bb35a1b19a 200
+[2025-11-30T11:42:34.555Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/248a453525fe6c129c492a38d79f078d6a0d6ffd33fd2132073118bb35a1b19a [stream]
+[2025-11-30T11:42:34.558Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/5c142191092518cbf18fef695616d0c431e46b5d5a4f8e7bbbe1d8985e7eff07 200
+[2025-11-30T11:42:34.558Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/5c142191092518cbf18fef695616d0c431e46b5d5a4f8e7bbbe1d8985e7eff07 [stream]
+[2025-11-30T11:42:34.559Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/b3c85476bdb3c695cda87e72df979f5457fd69e6cbebf688c37ebdd7cf22ab94 200
+[2025-11-30T11:42:34.559Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/b3c85476bdb3c695cda87e72df979f5457fd69e6cbebf688c37ebdd7cf22ab94 [stream]
+[2025-11-30T11:42:34.573Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/e4fb13e960cdff51513df9294510dc8068da0dac0f8128f94ddf54ad7f9bb888 200
+[2025-11-30T11:42:34.573Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/e4fb13e960cdff51513df9294510dc8068da0dac0f8128f94ddf54ad7f9bb888 [stream]
+[2025-11-30T11:42:34.623Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/ada9436e16ba7a506dadce5d82b96346bc52ea1f3d2685042be3f251b37e8c14 200
+[2025-11-30T11:42:34.623Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/ada9436e16ba7a506dadce5d82b96346bc52ea1f3d2685042be3f251b37e8c14 [stream]
+[2025-11-30T11:42:34.629Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/f668cb90771f2720ff79f904e964cf5f796b81453fe02830a5673fe9ecf8bdc8 200
+[2025-11-30T11:42:34.630Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/f668cb90771f2720ff79f904e964cf5f796b81453fe02830a5673fe9ecf8bdc8 [stream]
+[2025-11-30T11:42:34.675Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/9e1fa65da447b219e33eca169814a8e7fb5b68c9f03011cdf7685d0db2942e75 200
+[2025-11-30T11:42:34.675Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/9e1fa65da447b219e33eca169814a8e7fb5b68c9f03011cdf7685d0db2942e75 [stream]
+[2025-11-30T11:42:34.688Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/4ecacddfff1a78396d847aec50206a96762c3b5a3782628e6c461c801cbbf31c 200
+[2025-11-30T11:42:34.688Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/4ecacddfff1a78396d847aec50206a96762c3b5a3782628e6c461c801cbbf31c [stream]
+[2025-11-30T11:42:34.781Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/c9b285c0d02b29e589416bc8ed9420420abaf70049bb7b8c3fc86e9bf2d848e0 200
+[2025-11-30T11:42:34.781Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/c9b285c0d02b29e589416bc8ed9420420abaf70049bb7b8c3fc86e9bf2d848e0 [stream]
+[2025-11-30T11:42:34.817Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/a832e807ddcf06efacfed4cf10a3675324efe94b3d648fa874cafde8b5251ae3 200
+[2025-11-30T11:42:34.817Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/a832e807ddcf06efacfed4cf10a3675324efe94b3d648fa874cafde8b5251ae3 [stream]
+[2025-11-30T11:42:34.980Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/8442116688c0b6bb7d9c4eaaf91bd460c883b91b94d0d6cee7b2285fc7d37987 200
+[2025-11-30T11:42:34.981Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/8442116688c0b6bb7d9c4eaaf91bd460c883b91b94d0d6cee7b2285fc7d37987 [stream]
+[2025-11-30T11:42:35.038Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/0f0050f4cafd4418a18450dd1165a15aa2edfe66a29b577640e9c8a69a38296c 200
+[2025-11-30T11:42:35.039Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/0f0050f4cafd4418a18450dd1165a15aa2edfe66a29b577640e9c8a69a38296c [stream]
+[2025-11-30T11:42:35.152Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/f47e697c44d96018ed0dca8fc404b69f2007f52b3325d0860f05724a73a5a6d1 200
+[2025-11-30T11:42:35.153Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/f47e697c44d96018ed0dca8fc404b69f2007f52b3325d0860f05724a73a5a6d1 [stream]
+[2025-11-30T11:42:35.170Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/9da34659ebbf4ea4b303720f1bb003503bd6d2a0c9aee2323b8fc52ff99aa966 200
+[2025-11-30T11:42:35.171Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/9da34659ebbf4ea4b303720f1bb003503bd6d2a0c9aee2323b8fc52ff99aa966 [stream]
+[2025-11-30T11:42:35.246Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/33b4a57a294888b9396e236952e7d2d294ff3e785b6244adbf9e94129044e6d9 200
+[2025-11-30T11:42:35.247Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/33b4a57a294888b9396e236952e7d2d294ff3e785b6244adbf9e94129044e6d9 [stream]
+[2025-11-30T11:42:35.258Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/0822bba16f056fcc5554f89a54a6e578fd7a1fc4cb42aba10b5b0559eed15feb 200
+[2025-11-30T11:42:35.259Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/0822bba16f056fcc5554f89a54a6e578fd7a1fc4cb42aba10b5b0559eed15feb [stream]
+[2025-11-30T11:42:35.360Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/d143fb00fdc9ee50380b15ef95327845b2516b657d38844f2728e63bb484555e 200
+[2025-11-30T11:42:35.361Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/d143fb00fdc9ee50380b15ef95327845b2516b657d38844f2728e63bb484555e [stream]
+[2025-11-30T11:42:35.393Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/24931ec92cc0901a0387fc6b0df7d1db46a731e3d979489077eff73c819bf927 200
+[2025-11-30T11:42:35.393Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/24931ec92cc0901a0387fc6b0df7d1db46a731e3d979489077eff73c819bf927 [stream]
+[2025-11-30T11:42:35.878Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/7e89f20ecbe2acc5c745c33a5a6d67ab9ce6bf4e170e88d7d8433b5ea4f8ded3 200
+[2025-11-30T11:42:35.878Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/7e89f20ecbe2acc5c745c33a5a6d67ab9ce6bf4e170e88d7d8433b5ea4f8ded3 [stream]
+[2025-11-30T11:42:36.098Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/3c3a27c722e36442832b324e6ef7371a89c26f73865f784a895fb92b6066243e 200
+[2025-11-30T11:42:36.098Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/zest-well/versions/e6eccdf2acab9616/files/3c3a27c722e36442832b324e6ef7371a89c26f73865f784a895fb92b6066243e [stream]
+[2025-11-30T11:42:36.098Z] [hosting][upload queue][FINAL] {"max":3088,"min":1294,"avg":1867.08,"active":0,"complete":25,"success":25,"errored":0,"retried":0,"total":25,"elapsed":3091}
+i  hosting: upload complete 
+✔  hosting[zest-well]: file upload complete 
+[2025-11-30T11:42:36.098Z] [hosting] deploy completed after 3690ms
+[2025-11-30T11:42:36.099Z] [
+  {
+    "config": {
+      "public": "dist",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "site": "zest-well"
+    },
+    "version": "projects/670120406228/sites/zest-well/versions/e6eccdf2acab9616"
+  }
+]
+i  hosting[zest-well]: finalizing version... 
+[2025-11-30T11:42:36.100Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:36.100Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:36.100Z] >>> [apiv2][query] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/zest-well/versions/e6eccdf2acab9616 updateMask=status%2Cconfig
+[2025-11-30T11:42:36.100Z] >>> [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/zest-well/versions/e6eccdf2acab9616 {"status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]}}
+[2025-11-30T11:42:36.561Z] <<< [apiv2][status] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/zest-well/versions/e6eccdf2acab9616 200
+[2025-11-30T11:42:36.561Z] <<< [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/zest-well/versions/e6eccdf2acab9616 {"name":"projects/670120406228/sites/zest-well/versions/e6eccdf2acab9616","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2025-11-30T11:42:31.823389Z","createUser":{"email":"archiebwallis@gmail.com"},"finalizeTime":"2025-11-30T11:42:36.398683Z","finalizeUser":{"email":"archiebwallis@gmail.com"}}
+[2025-11-30T11:42:36.561Z] [hosting] finalized version for zest-well:[object Object]
+✔  hosting[zest-well]: version finalized 
+i  hosting[zest-well]: releasing new version... 
+[2025-11-30T11:42:36.562Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:36.562Z] Checked if tokens are valid: true, expires at: 1764505156508
+[2025-11-30T11:42:36.562Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/zest-well/channels/live/releases versionName=projects%2F670120406228%2Fsites%2Fzest-well%2Fversions%2Fe6eccdf2acab9616
+[2025-11-30T11:42:36.562Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/zest-well/channels/live/releases {}
+[2025-11-30T11:42:37.071Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/zest-well/channels/live/releases 200
+[2025-11-30T11:42:37.071Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/zest-well/channels/live/releases {"name":"projects/670120406228/sites/zest-well/channels/live/releases/1764502956308000","version":{"name":"projects/670120406228/sites/zest-well/versions/e6eccdf2acab9616","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2025-11-30T11:42:31.823389Z","createUser":{"email":"archiebwallis@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocJRWThVOtOhGpzKAqbuht4pCYH3lPJThCVip31Mq6DABun-J6A"},"finalizeTime":"2025-11-30T11:42:36.398683Z","finalizeUser":{"email":"archiebwallis@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocJRWThVOtOhGpzKAqbuht4pCYH3lPJThCVip31Mq6DABun-J6A"}},"type":"DEPLOY","releaseTime":"2025-11-30T11:42:36.308Z","releaseUser":{"email":"archiebwallis@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocJRWThVOtOhGpzKAqbuht4pCYH3lPJThCVip31Mq6DABun-J6A"}}
+[2025-11-30T11:42:37.072Z] [hosting] release: {"name":"projects/670120406228/sites/zest-well/channels/live/releases/1764502956308000","version":{"name":"projects/670120406228/sites/zest-well/versions/e6eccdf2acab9616","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2025-11-30T11:42:31.823389Z","createUser":{"email":"archiebwallis@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocJRWThVOtOhGpzKAqbuht4pCYH3lPJThCVip31Mq6DABun-J6A"},"finalizeTime":"2025-11-30T11:42:36.398683Z","finalizeUser":{"email":"archiebwallis@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocJRWThVOtOhGpzKAqbuht4pCYH3lPJThCVip31Mq6DABun-J6A"}},"type":"DEPLOY","releaseTime":"2025-11-30T11:42:36.308Z","releaseUser":{"email":"archiebwallis@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocJRWThVOtOhGpzKAqbuht4pCYH3lPJThCVip31Mq6DABun-J6A"}}
+✔  hosting[zest-well]: release complete 
+
+✔  Deploy complete! 
+
+Project Console: https://console.firebase.google.com/project/zest-well/overview
+Hosting URL: https://zest-well.web.app

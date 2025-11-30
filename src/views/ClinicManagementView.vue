@@ -12,13 +12,13 @@
         <!-- Export Buttons -->
         <div class="mb-3">
           <button 
-            @click="exportCSV" 
+            @click="exportClinicsCSV" 
             class="btn btn-outline-success me-2"
           >
             Export CSV
           </button>
           <button 
-            @click="exportPDF" 
+            @click="exportClinicsPDF" 
             class="btn btn-outline-danger"
           >
             Export PDF
@@ -68,11 +68,13 @@ const tableData = computed(() => {
   }))
 })
 
-const exportCSV = () => {
-  exportToCSV(tableData.value, 'clinics-export.csv')
+const exportClinicsCSV = () => {
+  const clinicData = clinicsStore.clinics
+  exportToCSV(clinicData, 'clinics-export.csv')
 }
 
-const exportPDF = () => {
-  exportToPDF(tableData.value, columns, 'Clinic Management Report', 'clinics-export.pdf')
+const exportClinicsPDF = () => {
+  const clinicData = clinicsStore.clinics
+  exportToPDF(clinicData, 'clinics-report.pdf', 'Clinic Directory Report')
 }
 </script>

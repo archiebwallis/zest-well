@@ -31,8 +31,12 @@
 
         <!-- Clinics List -->
         <div class="card mb-4">
-          <div class="card-header">
+          <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0">Available Clinics</h5>
+            <span v-if="clinicsStore.isUsingCachedData" class="badge bg-warning text-dark">
+              <i class="fas fa-database me-1"></i>
+              Cached Data
+            </span>
           </div>
           <div class="card-body">
             <div v-for="clinic in filteredClinics" :key="clinic.id" class="border rounded p-3 mb-3">
@@ -53,22 +57,35 @@
                 <!-- Rate This Clinic -->
                 <div v-if="userStore.currentUser" class="mt-2">
                   <small class="text-muted me-2">Rate this clinic:</small>
-                  <span 
+                  <button
                     v-for="star in 5" 
                     :key="star"
                     @click="rateClinic(clinic.id, star)"
-                    class="rating-star"
+                    class="rating-star btn p-0 border-0 bg-transparent"
                     :class="{ active: star <= (userRatings[clinic.id] || 0) }"
+                    :aria-label="`Rate ${clinic.name} ${star} out of 5 stars`"
+                    type="button"
                   >
                     ★
-                  </span>
+                  </button>
                 </div>
               </div>
               
-              <div class="mb-0">
+              <div class="mb-2">
                 <span class="badge bg-secondary me-1" v-for="service in clinic.services" :key="service">
                   {{ service }}
                 </span>
+              </div>
+              
+              <!-- Get Directions Button -->
+              <div class="mb-0">
+                <button 
+                  @click="getDirections(clinic.id)"
+                  class="btn btn-sm btn-outline-primary"
+                  :aria-label="`Get directions to ${clinic.name}`"
+                >
+                  Get Directions
+                </button>
               </div>
             </div>
             <div v-if="filteredClinics.length === 0" class="text-muted text-center py-3">
@@ -77,12 +94,18 @@
           </div>
         </div>
 
-        <!-- Map Placeholder -->
+        <!-- Interactive Map -->
         <div class="card">
-          <div class="card-body">
-            <div class="bg-light rounded p-5 text-center" style="min-height: 300px;">
-              <p class="text-muted">Interactive map will be added here</p>
-            </div>
+          <div class="card-header">
+            <h5 class="mb-0">Map View</h5>
+          </div>
+          <div class="card-body p-0">
+            <ClinicMap 
+              ref="mapRef"
+              :clinics="filteredClinics"
+              :search-location="searchTerm"
+              @directions-requested="getDirections"
+            />
           </div>
         </div>
       </div>
@@ -94,19 +117,19 @@
           </div>
           <div class="card-body">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="gp">
+              <input class="form-check-input" type="checkbox" id="gp" v-model="gpFilter">
               <label class="form-check-label" for="gp">General Practice</label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="dental">
-              <label class="form-check-label" for="dental">Dental Services</label>
+              <input class="form-check-input" type="checkbox" id="dental" v-model="dentalFilter">
+              <label class="form-check-label" for="dental">Dental</label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="mental">
+              <input class="form-check-input" type="checkbox" id="mental" v-model="mentalFilter">
               <label class="form-check-label" for="mental">Mental Health</label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="pharmacy">
+              <input class="form-check-input" type="checkbox" id="pharmacy" v-model="pharmacyFilter">
               <label class="form-check-label" for="pharmacy">Pharmacy</label>
             </div>
           </div>
@@ -124,11 +147,19 @@ import { useClinicsStore } from '@/stores/clinics'
 import { useUserStore } from '@/stores/user'
 import { collection, addDoc, query, where, getDocs } from 'firebase/firestore'
 import { db } from '@/firebase/config'
+import ClinicMap from '@/components/ClinicMap.vue'
 
 const clinicsStore = useClinicsStore()
 const userStore = useUserStore()
 const searchTerm = ref('')
 const userRatings = ref({})
+const mapRef = ref(null)
+
+// Service filters
+const gpFilter = ref(false)
+const dentalFilter = ref(false)
+const mentalFilter = ref(false)
+const pharmacyFilter = ref(false)
 
 const filteredClinics = computed(() => {
   let clinics = clinicsStore.clinics.map(clinic => ({
@@ -137,12 +168,27 @@ const filteredClinics = computed(() => {
     totalRatings: clinic.totalRatings || 0
   }))
   
-  if (!searchTerm.value) {
-    return clinics
+  // Filter by search term
+  if (searchTerm.value) {
+    clinics = clinics.filter(clinic => 
+      clinic.suburb.toLowerCase().includes(searchTerm.value.toLowerCase())
+    )
   }
-  return clinics.filter(clinic => 
-    clinic.suburb.toLowerCase().includes(searchTerm.value.toLowerCase())
-  )
+  
+  // Filter by selected services
+  const selectedServices = []
+  if (gpFilter.value) selectedServices.push('General Practice')
+  if (dentalFilter.value) selectedServices.push('Dental')
+  if (mentalFilter.value) selectedServices.push('Mental Health')
+  if (pharmacyFilter.value) selectedServices.push('Pharmacy')
+  
+  if (selectedServices.length > 0) {
+    clinics = clinics.filter(clinic => 
+      selectedServices.some(service => clinic.services.includes(service))
+    )
+  }
+  
+  return clinics
 })
 
 const renderStars = (rating) => {
@@ -234,7 +280,14 @@ const loadClinicRatings = async () => {
   }
 }
 
-onMounted(() => {
+const getDirections = (clinicId) => {
+  if (mapRef.value) {
+    mapRef.value.showDirections(clinicId)
+  }
+}
+
+onMounted(async () => {
+  await clinicsStore.loadClinics()
   loadUserRatings()
   loadClinicRatings()
 })
