@@ -101,8 +101,8 @@ const userInput = ref('')
 const isLoading = ref(false)
 const chatContainer = ref(null)
 
-// Gemini API key for Zest Well Health Assistant (Google Cloud Console)
-const GEMINI_API_KEY = 'AIzaSyBb8ToSaxZColQyPkXSKl8D4bQTn2lLZog'
+// Gemini API key from environment variables
+const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY
 
 // Debug function to check available models
 const listAvailableModels = async () => {
