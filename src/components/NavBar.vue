@@ -33,17 +33,40 @@
           </li>
         </ul>
         
-        <!-- Login/logout area -->
+        <!-- Auth area -->
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <router-link class="nav-link" to="/login">Login</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/register">Sign Up</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/dashboard">Dashboard</router-link>
-          </li>
+          <template v-if="userStore.currentUser">
+            <li class="nav-item">
+              <span class="navbar-text me-3">
+                Hello, {{ userStore.currentUser.email }}
+              </span>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/dashboard">Dashboard</router-link>
+            </li>
+            <li class="nav-item dropdown" v-if="userStore.userRole === 'staff'">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                Admin
+              </a>
+              <ul class="dropdown-menu">
+                <li><router-link class="dropdown-item" to="/admin">Users</router-link></li>
+                <li><router-link class="dropdown-item" to="/admin/clinics">Manage Clinics</router-link></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <button class="btn btn-outline-light btn-sm" @click="handleLogout">
+                Logout
+              </button>
+            </li>
+          </template>
+          <template v-else>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/login">Login</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/register">Sign Up</router-link>
+            </li>
+          </template>
         </ul>
       </div>
     </div>
@@ -51,7 +74,16 @@
 </template>
 
 <script setup>
-// Navigation bar component with responsive design
+import { useUserStore } from '@/stores/user'
+import { useRouter } from 'vue-router'
+
+const userStore = useUserStore()
+const router = useRouter()
+
+const handleLogout = async () => {
+  await userStore.logout()
+  router.push('/')
+}
 </script>
 
 <style scoped>
