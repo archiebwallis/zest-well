@@ -7,12 +7,12 @@ import { getFirestore } from 'firebase/firestore'
 
 // Web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDkIqRpy9FdfH9XAmw_hMxOyA3M4mybvPc",
-  authDomain: "zest-well.firebaseapp.com",
-  projectId: "zest-well",
-  storageBucket: "zest-well.firebasestorage.app",
-  messagingSenderId: "670120406228",
-  appId: "1:670120406228:web:10c70453469bb1d41d9f41"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 
 // Initialize Firebase

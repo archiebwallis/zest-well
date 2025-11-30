@@ -25,7 +25,7 @@ let map = null
 let userLocation = null
 const markers = ref([])
 
-mapboxgl.accessToken = 'pk.eyJ1IjoiYXJjaGllYndhbGxpcyIsImEiOiJjbWJuajU5eDUwaHNoMm9vYng5dnJlaW8zIn0.MkvAkBuBXuMtVXaXo_x87w'
+mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN
 
 onMounted(() => {
   initializeMap()
